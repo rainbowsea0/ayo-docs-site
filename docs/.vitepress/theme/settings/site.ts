@@ -25,9 +25,9 @@ export const SOCIAL_LINKS: { icon: string; link: string }[] = [
 export const GISCUS = {
   origin: "https://giscus.app",
   repo: "rainbowsea0/ayo-docs-site",
-  repoId: "R_kgDOUjJetw",
+  repoId: "R_kgDOUmjpmA",
   category: "General",
-  categoryId: "DIC_kwDOUjJet84DGDrZ",
+  categoryId: "DIC_kwDOUmjpmM4DGM1p",
 } as const;
 
 /**
