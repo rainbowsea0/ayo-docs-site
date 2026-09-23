@@ -1,0 +1,103 @@
+name: "Deploy Docker Image"
+
+permissions:
+  contents: read
+  packages: write
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    outputs:
+      TAG: ${{ steps.tag.outputs.TAG }}
+    steps:
+      - name: Checkout
+        uses: http://gitea-server:3000/actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Install Node.js
+        uses: http://gitea-server:3000/actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build
+        env:
+          VITE_AYO_SITE_URL: ${{vars.VITE_AYO_SITE_URL}}
+          VITE_AYO_EDIT_LINK_TYPE: ${{vars.VITE_AYO_EDIT_LINK_TYPE}}
+          VITE_AYO_EDIT_LINK_PATTERN: ${{vars.VITE_AYO_EDIT_LINK_PATTERN}}
+          VITE_AYO_LOCK_UNLOCK_CODE: ${{vars.VITE_AYO_LOCK_UNLOCK_CODE}}
+        run: npm run docs:build
+
+      - name: Set up Docker Buildx
+        uses: http://gitea-server:3000/docker/setup-buildx-action@v4
+        with:
+          driver: docker
+
+      - name: Login to Gitea Registry
+        uses: http://gitea-server:3000/docker/login-action@v4
+        with:
+          registry: gitea.luckyxm.cn:441
+          username: ${{ vars.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_TOKEN }}
+
+      - name: Login to XuanYuan Registry
+        uses: http://gitea-server:3000/docker/login-action@v4
+        with:
+          registry: docker.xuanyuan.run
+          username: ${{ secrets.XUANYUAN_REGISTRY_USERNAME }}
+          password: ${{ secrets.XUANYUAN_REGISTRY_PASSWORD }}
+
+      - name: Generate image tag
+        id: tag
+        run: |
+          echo "TAG=$(TZ=Asia/Shanghai date +%y%m%d)-${GITHUB_SHA::7}" >> $GITEA_OUTPUT
+          echo "TAG=$(TZ=Asia/Shanghai date +%y%m%d)-${GITHUB_SHA::7}"
+
+      - name: Build and push Docker image
+        uses: http://gitea-server:3000/docker/build-push-action@v7
+        with:
+          context: .
+          tags: |
+            gitea.luckyxm.cn:441/ayostack/ayo-docs-site:${{ steps.tag.outputs.TAG }}
+            gitea.luckyxm.cn:441/ayostack/ayo-docs-site:latest
+          push: true
+
+  bump-ops:
+    needs: build-and-push-image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Ops Repo
+        uses: http://gitea-server:3000/actions/checkout@v7
+        with:
+          repository: ayostack/ayo-gitops
+          ref: main
+          token: ${{ secrets.ACTION_BOT_TOKEN }}
+
+      - name: Change Version
+        env:
+          TAG: ${{ needs.build-and-push-image.outputs.TAG }}
+        run: |
+          git config user.name "action-bot"
+          git config user.email "11+action-bot@noreply.localhost"
+          sed -i "s/^DOCS_SITE_IMAGE_TAG=.*/DOCS_SITE_IMAGE_TAG=${TAG}/" ayo-docs-site/.env
+          git add .
+          git commit -m "chore: 更新 ayo-docs-site 镜像版本为 ${TAG}"
+
+      - name: Create Pull Request
+        env:
+          TAG: ${{ needs.build-and-push-image.outputs.TAG }}
+        run: |
+          git push origin HEAD:refs/for/main \
+            -o topic="chore/change-ayo-docs-site-version-${TAG}" \
+            -o title="chore: 更新 ayo-docs-site 镜像版本为 ${TAG}" \
+            -o description="Auto-updated by CI | Image tag: ${TAG}"

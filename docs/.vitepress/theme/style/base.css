@@ -1,0 +1,905 @@
+@charset "UTF-8";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--ayo-page-bg);
+  color: var(--ayo-text);
+  font-family: var(--ayo-font);
+  font-size: 13px;
+  line-height: 1.8;
+  font-variant-numeric: tabular-nums;
+  -webkit-text-size-adjust: 100%;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#app > * {
+  flex-shrink: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: bold;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 0;
+  vertical-align: middle;
+}
+
+p {
+  margin: 0;
+}
+
+button,
+input,
+textarea,
+select {
+  border-radius: var(--ayo-radius);
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: var(--ayo-link);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--ayo-link-visited);
+}
+
+a:hover {
+  color: var(--ayo-link-hover);
+}
+
+::selection {
+  background-color: var(--ayo-primary);
+  color: #fff;
+}
+
+.ayo-portal-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+/* 锚点跳转避让吸顶页头 */
+[id] {
+  scroll-margin-top: calc(var(--ayo-header-h, 0px) + 24px);
+}
+
+/* 内部滚动容器：细灰条 */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ayo-text-5) var(--ayo-bg-soft);
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--ayo-bg-soft);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--ayo-text-5);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--ayo-text-4);
+}
+
+.vp-doc {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--ayo-text);
+  word-wrap: break-word;
+}
+
+.vp-doc > *:first-child {
+  margin-top: 0;
+}
+
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4,
+.vp-doc h5,
+.vp-doc h6 {
+  position: relative;
+}
+
+.vp-doc h1 {
+  margin: 28px 0 14px;
+  font-size: 26px;
+  line-height: 1.4;
+  color: var(--ayo-heading);
+  letter-spacing: -0.01em;
+}
+
+.vp-doc h2 {
+  margin: 34px 0 16px;
+  font-size: 21px;
+  line-height: 1.5;
+  color: var(--ayo-heading);
+  letter-spacing: -0.01em;
+}
+
+.vp-doc h3 {
+  margin: 26px 0 12px;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ayo-heading-2);
+}
+
+.vp-doc h4 {
+  margin: 20px 0 8px;
+  font-size: 16px;
+  color: var(--ayo-heading-2);
+}
+
+.vp-doc h5,
+.vp-doc h6 {
+  margin: 18px 0 8px;
+  font-size: 15px;
+  color: var(--ayo-text-2);
+}
+
+.vp-doc .header-anchor {
+  position: absolute;
+  top: 0;
+  left: -20px;
+  color: var(--ayo-text-4);
+  font-weight: normal;
+  line-height: inherit;
+  text-decoration: none;
+  opacity: 0;
+  user-select: none;
+  transition:
+    color var(--ayo-transition),
+    opacity var(--ayo-transition);
+}
+
+.vp-doc .header-anchor::before {
+  content: "#";
+}
+
+.vp-doc h1:hover .header-anchor,
+.vp-doc h2:hover .header-anchor,
+.vp-doc h3:hover .header-anchor,
+.vp-doc h4:hover .header-anchor,
+.vp-doc h5:hover .header-anchor,
+.vp-doc h6:hover .header-anchor,
+.vp-doc .header-anchor:focus-visible {
+  opacity: 1;
+}
+
+.vp-doc .header-anchor:hover {
+  color: var(--ayo-link-hover);
+}
+
+.vp-doc .custom-block .header-anchor,
+.vp-doc blockquote .header-anchor {
+  left: -14px;
+}
+
+@media (max-width: 720px) {
+  .vp-doc .header-anchor {
+    display: none;
+  }
+}
+
+.vp-doc p,
+.vp-doc ul,
+.vp-doc ol {
+  margin: 14px 0;
+}
+
+.vp-doc ul,
+.vp-doc ol {
+  padding-left: 2em;
+}
+
+.vp-doc ul {
+  list-style: disc;
+}
+
+/* 嵌套换符号：不然两层都是实心圆点，看不出内外层 */
+.vp-doc ul ul {
+  list-style: circle;
+}
+
+.vp-doc ul ul ul {
+  list-style: square;
+}
+
+.vp-doc ol {
+  list-style: decimal;
+}
+
+.vp-doc li + li {
+  margin-top: 6px;
+}
+
+.vp-doc li > ul,
+.vp-doc li > ol {
+  margin: 4px 0;
+}
+
+.vp-doc li > p:first-child {
+  margin-top: 0;
+}
+
+.vp-doc li > p:last-child {
+  margin-bottom: 0;
+}
+
+.vp-doc li.task-list-item {
+  list-style: none;
+}
+
+.vp-doc .task-list-item-checkbox {
+  margin: 0 0.5em 0 -1.4em;
+  vertical-align: middle;
+  accent-color: var(--ayo-primary);
+}
+
+.vp-doc a {
+  color: var(--ayo-link);
+  text-decoration: none;
+}
+
+.vp-doc a:visited {
+  color: var(--ayo-link-visited);
+}
+
+.vp-doc a:not([class]):hover {
+  color: var(--ayo-link-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.vp-doc blockquote {
+  margin: 16px 0;
+  padding: 10px 16px;
+  border-left: 4px solid var(--ayo-quote-bar);
+  background-color: var(--ayo-quote-bg);
+  color: var(--ayo-text-2);
+}
+
+.vp-doc blockquote > p {
+  margin: 0;
+}
+
+/* 嵌套引用：去掉底色、换成 2px 细条 —— 父级已经铺了底色，第二层再铺同色只会糊成一片，
+   靠缩进 + 细条区分层次 */
+.vp-doc blockquote blockquote {
+  margin: 10px 0 0;
+  padding: 2px 0 2px 12px;
+  border-left: 2px solid var(--ayo-border);
+  background-color: transparent;
+}
+
+/* 引用块 / 容器里的代码块：外边距收一档，免得在小色块里再撑出大空隙 */
+.vp-doc blockquote div[class*="language-"],
+.vp-doc .custom-block div[class*="language-"] {
+  margin: 10px 0;
+}
+
+/* 分割线：用最浅的一档线（--ayo-line），比 --ayo-border 弱，不会把正文切成两半 */
+.vp-doc hr {
+  margin: 28px 0;
+  border: 0;
+  border-top: 1px solid var(--ayo-line);
+}
+
+/* 图片：保留 2px 白边 + 1px 细框的「相框」处理，截图放进来不会和正文糊在一起 */
+.vp-doc img {
+  padding: 2px;
+  border: 1px solid var(--ayo-border);
+  background-color: var(--ayo-bg);
+}
+
+/* 独占一行的图片（截图几乎都是这种）居中并给足上下留白；混在文字里的小图不受影响 */
+.vp-doc p > img:only-child {
+  display: block;
+  margin: 20px auto;
+}
+
+/* 图注：VitePress 不会自动生成 <figure>，作者手写时才生效 */
+.vp-doc figure {
+  margin: 20px 0;
+}
+
+.vp-doc figure > img {
+  display: block;
+  margin: 0 auto;
+}
+
+.vp-doc figcaption {
+  margin-top: 8px;
+  color: var(--ayo-text-4);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* ---------- 表格：整表 100% 宽 + 仅单元格细边框（门户公文风） ---------- */
+.vp-doc table {
+  display: table;
+  width: 100%;
+  margin: 14px 0;
+  border-collapse: collapse;
+  border: none;
+}
+
+.vp-doc tr {
+  background: transparent;
+  border: none;
+}
+
+.vp-doc tr:nth-child(2n) {
+  background-color: var(--ayo-bg-soft);
+}
+
+.vp-doc th,
+.vp-doc td {
+  padding: 8px 12px;
+  border: 1px solid var(--ayo-border);
+  overflow-wrap: anywhere;
+}
+
+.vp-doc th {
+  background-color: var(--ayo-bg-soft);
+  font-size: 14px;
+  text-align: left;
+}
+
+.vp-doc td {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ---------- 行内代码 ---------- */
+.vp-doc :not(pre) > code {
+  padding: 2px 5px;
+  border: 1px solid var(--ayo-border);
+  background-color: var(--ayo-bg-soft);
+  font-family: var(--ayo-font-mono);
+  font-size: 13px;
+}
+
+/* ---------- 代码块：深色岛 ---------- */
+.vp-doc div[class*="language-"] {
+  position: relative;
+  margin: 16px 0;
+  padding-top: var(--ayo-code-bar-h);
+  border: 1px solid var(--ayo-code-border);
+  background-color: var(--ayo-code-bg);
+}
+
+.vp-doc div[class*="language-"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: var(--ayo-code-bar-h);
+  border-bottom: 1px solid var(--ayo-code-line);
+  background-color: var(--ayo-code-bar);
+}
+
+.vp-doc div[class*="language-"] pre {
+  margin: 0;
+  padding: 16px 0;
+  overflow-x: auto;
+  font-family: var(--ayo-font-mono);
+  font-size: 13px;
+  line-height: 1.7;
+  tab-size: 4;
+}
+
+.vp-doc div[class*="language-"] code {
+  display: block;
+  width: fit-content;
+  min-width: 100%;
+  padding: 0 18px;
+  font-family: inherit;
+  tab-size: 4;
+}
+
+.vp-doc div[class*="language-"] code .highlighted,
+.vp-doc div[class*="language-"] code .diff {
+  display: inline-block;
+  width: calc(100% + 2 * 18px);
+  margin: 0 -18px;
+  padding: 0 18px;
+}
+
+.vp-doc div[class*="language-"] code .highlighted {
+  background-color: var(--ayo-code-highlight);
+}
+
+.vp-doc div[class*="language-"] code .highlighted.error {
+  background-color: var(--ayo-code-error);
+}
+
+.vp-doc div[class*="language-"] code .highlighted.warning {
+  background-color: var(--ayo-code-warning);
+}
+
+.vp-doc div[class*="language-"] code .diff.add {
+  background-color: var(--ayo-code-add);
+}
+
+.vp-doc div[class*="language-"] code .diff.remove {
+  background-color: var(--ayo-code-del);
+  opacity: 0.75;
+}
+
+.vp-doc div[class*="language-"] code .diff::before {
+  position: absolute;
+  left: 4px;
+}
+
+.vp-doc div[class*="language-"].line-numbers-mode code .diff::before {
+  left: calc(2rem + 4px);
+}
+
+.vp-doc div[class*="language-"] code .diff.add::before {
+  content: "+";
+  color: var(--ayo-code-add-sign);
+}
+
+.vp-doc div[class*="language-"] code .diff.remove::before {
+  content: "-";
+  color: var(--ayo-code-del-sign);
+}
+
+.vp-doc div[class*="language-"] .has-focused-lines .line:not(.has-focus) {
+  opacity: 0.7;
+  filter: blur(0.095rem);
+  transition:
+    filter 0.35s,
+    opacity 0.35s;
+}
+
+.vp-doc div[class*="language-"]:hover .has-focused-lines .line:not(.has-focus) {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.vp-doc div[class*="language-"] > .vp-code-title {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  max-width: calc(100% - var(--ayo-code-copy-w) - 110px);
+  overflow: hidden;
+  color: var(--ayo-code-title);
+  font-family: var(--ayo-font-mono);
+  font-size: 12px;
+  line-height: var(--ayo-code-bar-h);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.vp-doc div[class*="language-"] > .lang {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  color: var(--ayo-code-dim);
+  font-family: var(--ayo-font-mono);
+  font-size: 12px;
+  line-height: var(--ayo-code-bar-h);
+  user-select: none;
+}
+
+.vp-doc div[class*="language-"]:has(> .vp-code-title) > .lang {
+  right: calc(8px + var(--ayo-code-copy-w) + 12px);
+  left: auto;
+}
+
+.vp-doc div[class*="language-"] > button.copy {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  width: var(--ayo-code-copy-w);
+  height: 22px;
+  padding: 0;
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: var(--ayo-code-dim);
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    border-color var(--ayo-transition),
+    background-color var(--ayo-transition),
+    color var(--ayo-transition);
+}
+
+.vp-doc div[class*="language-"] > button.copy::before {
+  content: attr(title);
+}
+
+.vp-doc div[class*="language-"] > button.copy.copied::before {
+  content: attr(data-copied);
+}
+
+.vp-doc div[class*="language-"] > button.copy:hover,
+.vp-doc div[class*="language-"] > button.copy.copied {
+  border-color: var(--ayo-code-line);
+  background-color: var(--ayo-code-hover);
+  color: var(--ayo-code-title);
+}
+
+.vp-doc div[class*="language-"].line-numbers-mode {
+  padding-left: 2rem;
+}
+
+.vp-doc .line-numbers-wrapper {
+  position: absolute;
+  top: var(--ayo-code-bar-h);
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  width: 2rem;
+  padding-top: 16px;
+  border-right: 1px solid var(--ayo-code-line);
+  color: var(--ayo-code-number);
+  font-family: var(--ayo-font-mono);
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: center;
+  user-select: none;
+}
+
+.vp-doc .vp-code-group {
+  margin: 16px 0;
+  border: 1px solid var(--ayo-code-border);
+  background-color: var(--ayo-code-bg);
+}
+
+.vp-doc .vp-code-group .tabs {
+  display: flex;
+  align-items: stretch;
+  height: var(--ayo-code-bar-h);
+  margin: 0;
+  padding-right: calc(var(--ayo-code-copy-w) + 16px);
+  border-bottom: 1px solid var(--ayo-code-line);
+  background-color: var(--ayo-code-tab-bg);
+}
+
+.vp-doc .vp-code-group .tabs label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  color: var(--ayo-code-dim);
+  font-size: 13px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--ayo-transition),
+    color var(--ayo-transition);
+}
+
+.vp-doc .vp-code-group .tabs label:hover {
+  color: var(--ayo-code-title);
+}
+
+.vp-doc .vp-code-group .tabs input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.vp-doc .vp-code-group .tabs label::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  content: "";
+  background-color: transparent;
+  transition: background-color var(--ayo-transition);
+}
+
+.vp-doc .vp-code-group .tabs label::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  content: "";
+  background-color: transparent;
+  transition: background-color var(--ayo-transition);
+}
+
+.vp-doc .vp-code-group .tabs input:checked + label {
+  background-color: var(--ayo-code-bg);
+  color: var(--ayo-code-title);
+}
+
+.vp-doc .vp-code-group .tabs input:checked + label::before {
+  background-color: var(--ayo-primary);
+}
+
+.vp-doc .vp-code-group .tabs input:checked + label::after {
+  background-color: var(--ayo-code-bg);
+}
+
+.vp-doc .vp-code-group .blocks > div[class*="language-"] {
+  margin: 0;
+  padding-top: 0;
+  border: 0;
+}
+
+.vp-doc .vp-code-group .blocks > div[class*="language-"]::before {
+  content: none;
+}
+
+.vp-doc .vp-code-group .blocks > div[class*="language-"] > .lang,
+.vp-doc .vp-code-group .blocks > div[class*="language-"] > .vp-code-title {
+  display: none;
+}
+
+.vp-doc .vp-code-group .blocks > div[class*="language-"] > .line-numbers-wrapper {
+  top: 0;
+}
+
+.vp-doc .vp-code-group .blocks > div[class*="language-"] > button.copy {
+  top: calc(6px - var(--ayo-code-bar-h));
+}
+
+.vp-doc .vp-code-group .blocks > div:not(.active) {
+  display: none;
+}
+
+.vp-doc .custom-block {
+  margin: 18px 0;
+  padding: 12px 16px;
+  border: 1px solid var(--ayo-line);
+  border-left: 4px solid var(--ayo-line);
+  background-color: var(--ayo-bg-soft);
+  font-size: 14px;
+}
+
+.vp-doc .custom-block .custom-block-title {
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.vp-doc .custom-block p {
+  margin: 6px 0;
+}
+
+.vp-doc .custom-block.tip {
+  border-left-color: var(--ayo-green);
+  background-color: var(--ayo-green-soft);
+}
+
+.vp-doc .custom-block.tip .custom-block-title {
+  color: var(--ayo-green);
+}
+
+.vp-doc .custom-block.info {
+  border-left-color: var(--ayo-primary);
+  background-color: var(--ayo-primary-soft);
+}
+
+.vp-doc .custom-block.info .custom-block-title {
+  color: var(--ayo-primary);
+}
+
+.vp-doc .custom-block.warning {
+  border-left-color: var(--ayo-amber);
+  background-color: var(--ayo-amber-soft);
+}
+
+.vp-doc .custom-block.warning .custom-block-title {
+  color: var(--ayo-amber-dark);
+}
+
+.vp-doc .custom-block.danger {
+  border-left-color: var(--ayo-red);
+  background-color: var(--ayo-red-soft);
+}
+
+.vp-doc .custom-block.danger .custom-block-title {
+  color: var(--ayo-red);
+}
+
+.vp-doc .custom-block.details {
+  border-left-color: var(--ayo-text-4);
+  background-color: var(--ayo-bg);
+}
+
+.vp-doc .custom-block.details summary {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.vp-doc .custom-block.note {
+  border-left-color: var(--ayo-primary);
+  background-color: var(--ayo-primary-soft);
+}
+
+.vp-doc .custom-block.note .custom-block-title {
+  color: var(--ayo-primary);
+}
+
+.vp-doc .custom-block.important {
+  border-left-color: var(--ayo-cyan);
+  background-color: var(--ayo-cyan-soft);
+}
+
+.vp-doc .custom-block.important .custom-block-title {
+  color: var(--ayo-cyan);
+}
+
+.vp-doc .custom-block.caution {
+  border-left-color: var(--ayo-red);
+  background-color: var(--ayo-red-soft);
+}
+
+.vp-doc .custom-block.caution .custom-block-title {
+  color: var(--ayo-red);
+}
+
+.vp-doc .footnote-ref a {
+  padding: 0 2px;
+  color: var(--ayo-link);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.vp-doc .footnotes-sep {
+  display: none;
+}
+
+.vp-doc .footnotes {
+  margin-top: 32px;
+  padding-top: 12px;
+  border-top: 1px solid var(--ayo-line);
+  color: var(--ayo-text-3);
+  font-size: 13px;
+}
+
+.vp-doc .footnotes-list {
+  padding-left: 1.8em;
+}
+
+.vp-doc .footnote-item p {
+  margin: 6px 0;
+}
+
+.vp-doc .footnote-backref {
+  color: var(--ayo-text-4);
+  text-decoration: none;
+}
+
+.vp-doc .footnote-backref:hover {
+  color: var(--ayo-link-hover);
+}
+
+.vp-doc kbd {
+  padding: 2px 6px;
+  border: 1px solid var(--ayo-border);
+  border-bottom-width: 2px;
+  background-color: var(--ayo-bg-soft);
+  color: var(--ayo-text-2);
+  font-family: var(--ayo-font-mono);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.vp-doc mark {
+  padding: 0 3px;
+  background-color: var(--ayo-amber-soft);
+  color: var(--ayo-text);
+}
+
+.vp-doc del {
+  color: var(--ayo-text-4);
+}
+
+.vp-doc abbr[title] {
+  text-decoration: underline dotted var(--ayo-text-5);
+  text-underline-offset: 3px;
+  cursor: help;
+}
+
+.vp-doc sub,
+.vp-doc sup {
+  position: relative;
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+.vp-doc sup {
+  top: -0.5em;
+}
+
+.vp-doc sub {
+  bottom: -0.25em;
+}
+
+.vp-doc details:not(.custom-block) {
+  margin: 16px 0;
+  padding: 12px 16px;
+  border: 1px solid var(--ayo-line);
+  border-left: 4px solid var(--ayo-text-4);
+  background-color: var(--ayo-bg);
+}
+
+.vp-doc summary {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.vp-doc summary::marker {
+  color: var(--ayo-text-4);
+}
+
+.vp-doc details[open] > summary {
+  margin-bottom: 8px;
+}
+
+.nprogress .bar {
+  background-color: var(--ayo-primary);
+}
+
+.nprogress .peg {
+  box-shadow:
+    0 0 10px var(--ayo-primary),
+    0 0 5px var(--ayo-primary);
+}
+
+@media (max-width: 720px) {
+  .vp-doc h1 {
+    margin: 22px 0 12px;
+    font-size: 22px;
+  }
+
+  .vp-doc h2 {
+    margin: 26px 0 12px;
+    font-size: 19px;
+  }
+
+  .vp-doc h3 {
+    margin: 20px 0 10px;
+    font-size: 16px;
+  }
+
+  .vp-doc img {
+    padding: 0;
+    border: 0;
+  }
+}

@@ -1,0 +1,294 @@
+@charset "UTF-8";
+
+.ayo-doc {
+  max-width: var(--ayo-page-width);
+  margin: 0 auto;
+  padding: 24px 24px 48px;
+}
+
+.ayo-doc__grid {
+  display: grid;
+  grid-template-columns:
+    var(--ayo-doc-side-width) minmax(0, 1fr)
+    var(--ayo-hot-width);
+  gap: var(--ayo-gap);
+  align-items: start;
+}
+
+.ayo-doc__grid--no-toc {
+  grid-template-columns: var(--ayo-doc-side-width) minmax(0, 1fr);
+}
+
+.ayo-doc__side,
+.ayo-doc__toc {
+  position: sticky;
+  top: calc(var(--ayo-header-h, 0px) + 20px);
+  align-self: start;
+  min-width: 0;
+  max-height: calc(100vh - var(--ayo-header-h, 0px) - 32px);
+  overflow-y: auto;
+}
+
+.ayo-doc__support {
+  margin-top: 16px;
+}
+
+.ayo-doc__main {
+  min-width: 0;
+}
+
+.ayo-doc__card {
+  padding: 24px 28px 28px;
+  border: 1px solid var(--ayo-line);
+  background-color: var(--ayo-bg);
+  box-shadow: var(--ayo-shadow);
+}
+
+.ayo-doc__title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.ayo-doc__title {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  color: var(--ayo-heading);
+  font-size: 28px;
+  line-height: 1.4;
+}
+
+.ayo-doc__flag {
+  flex-shrink: 0;
+  margin-top: 8px;
+  padding: 1px 8px;
+  border: 1px solid var(--ayo-primary-line);
+  background-color: var(--ayo-primary-soft);
+  color: var(--ayo-primary);
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1.7;
+  white-space: nowrap;
+}
+
+.ayo-doc__series-tag {
+  flex-shrink: 0;
+  margin-top: 8px;
+  padding: 1px 8px;
+  border: 1px solid var(--ayo-primary-line);
+  background-color: var(--ayo-primary-soft);
+  color: var(--ayo-primary);
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1.7;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.ayo-doc__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 18px;
+  margin: 14px 0 6px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--ayo-line);
+  color: var(--ayo-text-3);
+  font-size: 13px;
+}
+
+.ayo-doc__meta-item--end {
+  margin-left: auto;
+}
+
+.ayo-doc__content {
+  margin-top: 8px;
+}
+
+.ayo-doc__lock-wrap {
+  position: relative;
+}
+
+.ayo-doc__lock-wrap.is-locked {
+  overflow: hidden;
+}
+
+.ayo-doc__lock-wrap.is-locked .ayo-doc__content {
+  max-height: var(--ayo-lock-max-h);
+  overflow: hidden;
+}
+
+.ayo-doc__tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  margin-top: 30px;
+  padding-top: 16px;
+  border-top: 1px solid var(--ayo-line);
+}
+
+.ayo-doc__tags-label {
+  color: var(--ayo-text);
+  font-weight: bold;
+}
+
+.ayo-doc__tag {
+  padding: 1px 8px;
+  border: 1px solid var(--ayo-line);
+  background-color: var(--ayo-bg-soft);
+  color: var(--ayo-primary);
+  font-size: 13px;
+  text-decoration: none;
+  transition:
+    border-color var(--ayo-transition),
+    background-color var(--ayo-transition);
+}
+
+.ayo-doc__tag:hover {
+  border-color: var(--ayo-primary-line);
+  background-color: var(--ayo-primary-soft);
+  color: var(--ayo-link-hover);
+  text-decoration: none;
+}
+
+.ayo-doc__edit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 16px;
+  margin-top: 18px;
+  color: var(--ayo-text-3);
+  font-size: 13px;
+}
+
+.ayo-doc__updated {
+  flex-shrink: 0;
+}
+
+.ayo-doc__edit-link {
+  color: var(--ayo-link);
+}
+
+.ayo-doc__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 28px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--ayo-line);
+  font-size: 14px;
+}
+
+.ayo-doc__nav-link,
+.ayo-doc__nav-none {
+  padding: 6px 14px;
+  border: 1px dashed var(--ayo-line);
+  line-height: 1.6;
+  transition:
+    border-color var(--ayo-transition),
+    background-color var(--ayo-transition);
+}
+
+.ayo-doc__nav-link:hover {
+  border-color: var(--ayo-primary-line);
+  background-color: var(--ayo-bg-soft);
+  color: var(--ayo-link-hover);
+}
+
+.ayo-doc__nav-none {
+  color: var(--ayo-text-5);
+}
+
+.ayo-doc__toc-link {
+  display: block;
+  color: var(--ayo-text-3);
+  font-size: 13px;
+  line-height: 1.7;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.ayo-doc__toc-link:hover {
+  color: var(--ayo-link-hover);
+}
+
+.ayo-doc__toc-link.is-active {
+  color: var(--ayo-primary);
+  font-weight: bold;
+}
+
+.ayo-doc__toc-link--3 {
+  padding-left: 14px;
+  font-size: 12px;
+}
+
+/* 左栏通用条目（项目章节导航等） */
+.ayo-doc__side-link {
+  display: block;
+  color: var(--ayo-text-3);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.ayo-doc__side-link:visited {
+  color: var(--ayo-text-3);
+}
+
+.ayo-doc__side-link:hover {
+  color: var(--ayo-link-hover);
+}
+
+.ayo-doc__side-link.is-active {
+  color: var(--ayo-primary);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.ayo-doc__side-link.is-active::before {
+  content: "▶ ";
+  color: var(--ayo-primary);
+}
+
+@media (max-width: 1024px) {
+  .ayo-doc__grid,
+  .ayo-doc__grid--no-toc {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ayo-doc__main {
+    order: 0;
+  }
+
+  .ayo-doc__side {
+    position: static;
+    order: 1;
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  .ayo-doc__toc {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .ayo-doc {
+    padding: 14px 12px 32px;
+  }
+
+  .ayo-doc__card {
+    padding: 16px 14px 20px;
+  }
+
+  .ayo-doc__title {
+    font-size: 21px;
+  }
+
+  .ayo-doc__meta-item--end {
+    margin-left: 0;
+  }
+}

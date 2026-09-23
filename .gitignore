@@ -1,0 +1,9 @@
+.idea
+node_modules
+docs/.vitepress/dist
+docs/.vitepress/cache
+
+# 站点配置：仓库里只留模板 .env.example，真实值（含解锁码、giscus id）放本机 / 部署机
+.env
+.env.local
+.env.*.local

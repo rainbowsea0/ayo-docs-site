@@ -1,0 +1,39 @@
+name: "CI"
+
+permissions:
+  contents: read
+
+# 由于不允许直接 push 提交，所以这里直接写 PR main
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize]
+
+jobs:
+  docs-validate:
+    runs-on: ubuntu-latest
+    steps:
+      # 检出代码
+      - name: Checkout
+        uses: http://gitea-server:3000/actions/checkout@v7
+        # 安装 node 环境
+      - name: Install Node.js
+        uses: http://gitea-server:3000/actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: package-lock.json
+      # 安装依赖
+      - name: Install Dependencies
+        run: npm ci
+        # 类型检查
+      - name: Type Check
+        run: npm run docs:typecheck
+      - name: Build
+        env:
+          VITE_AYO_SITE_URL: ${{vars.VITE_AYO_SITE_URL}}
+          VITE_AYO_EDIT_LINK_TYPE: ${{vars.VITE_AYO_EDIT_LINK_TYPE}}
+          VITE_AYO_EDIT_LINK_PATTERN: ${{vars.VITE_AYO_EDIT_LINK_PATTERN}}
+          VITE_AYO_LOCK_UNLOCK_CODE: ${{vars.VITE_AYO_LOCK_UNLOCK_CODE}}
+        run: npm run docs:build

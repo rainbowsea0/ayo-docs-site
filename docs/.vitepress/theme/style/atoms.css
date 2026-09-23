@@ -1,0 +1,204 @@
+@charset "UTF-8";
+
+/* 结构性链接（频道条 / 卡片标题 / 列表标题）不走下划线 */
+.ayo-plain,
+.ayo-plain:visited,
+.ayo-plain:hover {
+  text-decoration: none;
+}
+
+/* 扁平按钮（现代皮肤：去掉老式渐变，靠边框与浅蓝底表示状态） */
+.ayo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 1px solid var(--ayo-border);
+  background: var(--ayo-bg);
+  color: var(--ayo-text);
+  font-family: inherit;
+  line-height: 1.5;
+  cursor: pointer;
+  transition:
+    border-color var(--ayo-transition),
+    background-color var(--ayo-transition),
+    color var(--ayo-transition);
+}
+
+.ayo-btn:hover {
+  border-color: var(--ayo-primary);
+  background: var(--ayo-primary-soft);
+  color: var(--ayo-primary);
+}
+
+.ayo-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.ayo-btn--xs {
+  height: 24px;
+  padding: 0 10px;
+  font-size: 12px;
+}
+
+.ayo-btn--sm {
+  height: 28px;
+  padding: 0 14px;
+  font-size: 13px;
+}
+
+.ayo-btn--md {
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* 主色实心按钮（列表行末的「阅读全文」）：直角、白字、hover 加深 */
+.ayo-btn--primary {
+  border-color: var(--ayo-primary);
+  background: var(--ayo-primary);
+  color: #fff;
+}
+
+.ayo-btn--primary:visited {
+  color: #fff;
+}
+
+.ayo-btn--primary:hover {
+  border-color: var(--ayo-primary-hover);
+  background: var(--ayo-primary-hover);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* 频道条内的按钮变体（浅底深字：频道条已改为浅色） */
+.ayo-btn--channel {
+  border: 0;
+  background: transparent;
+  color: var(--ayo-text);
+  padding: 6px 14px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.ayo-btn--channel:hover,
+.ayo-btn--channel.is-open {
+  background-color: var(--ayo-primary-soft);
+  color: var(--ayo-primary);
+}
+
+/* 频道条右端的「更多」（浅底描边） */
+.ayo-btn--bar {
+  border: 1px solid var(--ayo-border);
+  background-color: var(--ayo-bg);
+  color: var(--ayo-text);
+}
+
+.ayo-btn--bar:hover,
+.ayo-btn--bar.is-open {
+  border-color: var(--ayo-primary);
+  background-color: var(--ayo-primary-soft);
+  color: var(--ayo-primary);
+}
+
+/* 细边框输入框 */
+.ayo-input {
+  height: 28px;
+  padding: 0 8px;
+  border: 1px solid var(--ayo-border);
+  background-color: var(--ayo-bg);
+  color: var(--ayo-text);
+  font-family: inherit;
+  font-size: 13px;
+  outline: none;
+  transition:
+    border-color var(--ayo-transition),
+    box-shadow var(--ayo-transition);
+}
+
+.ayo-input:focus {
+  border-color: var(--ayo-primary);
+  box-shadow: 0 0 0 3px var(--ayo-primary-soft);
+}
+
+.ayo-input::placeholder {
+  color: var(--ayo-text-5);
+}
+
+/* 列表：去项目符号，条目之间靠内边距撑开 */
+.ayo-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ayo-list > li {
+  padding: 5px 4px;
+  transition: background-color var(--ayo-transition);
+}
+
+/* 整行浅底：列表条目 hover 的反馈（链接自身再叠下划线） */
+.ayo-list > li:hover {
+  background-color: var(--ayo-bg-soft);
+}
+
+.ayo-ellipsis {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* 标题标记（新 / 荐 / 热）：描边小标签，比实心色块轻，不抢标题 */
+.ayo-marker {
+  display: inline-block;
+  flex-shrink: 0;
+  margin-right: 4px;
+  padding: 0 3px;
+  outline: 1px solid currentColor;
+  outline-offset: -1px;
+  background-color: transparent;
+  color: var(--ayo-primary);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 1.5;
+  vertical-align: 1px;
+}
+
+.ayo-marker--rec {
+  color: var(--ayo-amber);
+}
+
+.ayo-marker--none {
+  outline: none;
+  background-color: transparent;
+  color: var(--ayo-text-5);
+}
+
+.ayo-blink {
+  animation: ayo-blink 1.2s steps(1) infinite;
+}
+
+@keyframes ayo-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* 计数数值（运行时间等）：等宽老式数字 */
+.ayo-count {
+  color: var(--ayo-primary);
+  font-family: var(--ayo-font-mono);
+  font-weight: bold;
+}
+
+/* iOS 聚焦输入框不放大整页的下限是 16px，字号提上来的同时给足高度 */
+@media (max-width: 720px) {
+  .ayo-input {
+    height: 28px;
+    font-size: 17px;
+  }
+}

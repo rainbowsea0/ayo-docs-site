@@ -1,0 +1,137 @@
+/* ------------------------------------------------------------------
+ * 公告详情页排版（红头文件公文风）
+ * ------------------------------------------------------------------ */
+
+/* 公告页单栏白纸：左上右栏与页内目录都退场，版心收窄到公文宽度 */
+.ayo-doc--announce .ayo-doc__grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.ayo-doc--announce .ayo-doc__card {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 64px 56px;
+  background-color: var(--ayo-bg);
+}
+
+@media (max-width: 720px) {
+  .ayo-doc--announce .ayo-doc__card {
+    padding: 24px 16px 32px;
+  }
+
+  .ayo-doc--announce .ayo-announce__org {
+    font-size: 24px;
+    letter-spacing: 2px;
+  }
+
+  .ayo-doc--announce .ayo-doc__title {
+    font-size: 22px;
+  }
+
+  .ayo-doc--announce .vp-doc,
+  .ayo-doc--announce .ayo-announce__no {
+    font-size: 17px;
+  }
+}
+
+.ayo-doc--announce .ayo-announce__redhead {
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.ayo-doc--announce .ayo-announce__org {
+  color: var(--ayo-doc-red);
+  font-family: "方正小标宋简体", "FZXiaoBiaoSong-B05S", "SimSun", "NSimSun", "Songti SC", serif;
+  font-size: 34px;
+  font-weight: bold;
+  line-height: 1.5;
+  letter-spacing: 4px;
+}
+
+/* 红色反线：公文版头标志性的单粗红线 */
+.ayo-doc--announce .ayo-announce__line {
+  margin: 12px auto 10px;
+  border-top: 2px solid var(--ayo-doc-red);
+}
+
+/* 发文字号：3 号仿宋，居中，红线下方 */
+.ayo-doc--announce .ayo-announce__no {
+  color: #000;
+  font-family: "FangSong", "仿宋", "STFangsong", "SimSun", serif;
+  font-size: 21px;
+  text-align: center;
+}
+
+/* 公文标题：2 号小标宋（黑），居中 */
+.ayo-doc--announce .ayo-doc__title {
+  color: #000;
+  font-family: "方正小标宋简体", "FZXiaoBiaoSong-B05S", "SimSun", "NSimSun", "Songti SC", serif;
+  font-size: 29px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* 正文：3 号仿宋，首行缩进 2 字符，行距约 28 磅 */
+.ayo-doc--announce .vp-doc {
+  color: #000;
+  font-family: "FangSong", "仿宋", "STFangsong", "SimSun", serif;
+  font-size: 21px;
+  line-height: 1.78;
+}
+
+.ayo-doc--announce .vp-doc p {
+  margin: 0.4em 0;
+  text-indent: 2em;
+}
+
+/* 一级标题（一、）：3 号黑体，顶格 */
+.ayo-doc--announce .vp-doc h2 {
+  padding: 0;
+  border: 0;
+  color: #000;
+  font-family: "SimHei", "Heiti SC", "Microsoft YaHei", sans-serif;
+  font-size: 21px;
+  font-weight: bold;
+  text-indent: 0;
+}
+
+/* 二级标题（（一））：3 号楷体，顶格 */
+.ayo-doc--announce .vp-doc h3 {
+  color: #000;
+  font-family: "KaiTi", "楷体", "STKaiti", "Kaiti SC", serif;
+  font-size: 21px;
+  font-weight: normal;
+  text-indent: 0;
+}
+
+/* 三级标题（1.）：3 号仿宋加粗，左空二字 */
+.ayo-doc--announce .vp-doc h4 {
+  color: #000;
+  font-family: "FangSong", "仿宋", "STFangsong", "SimSun", serif;
+  font-size: 21px;
+  font-weight: bold;
+  text-indent: 2em;
+}
+
+.ayo-doc--announce .vp-doc ol {
+  margin: 0.4em 0;
+  padding-left: 2em;
+}
+
+/* 行内代码芯片：公文白纸上固定浅底黑字 */
+.ayo-doc--announce .vp-doc :not(pre) > code {
+  border-color: var(--ayo-border);
+  background-color: var(--ayo-bg-soft);
+  color: #000;
+}
+
+/* 落款（发文机关署名 + 成文日期）：右对齐、取消首行缩进、右侧留空 */
+.ayo-doc--announce .vp-doc .portal-announce-sign,
+.ayo-doc--announce .vp-doc .ayo-announce-sign {
+  margin-top: 1.6em;
+  padding-right: 2em;
+  line-height: 1.9;
+  text-align: right;
+  text-indent: 0;
+}
