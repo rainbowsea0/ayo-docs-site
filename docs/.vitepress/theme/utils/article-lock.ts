@@ -4,7 +4,6 @@ import { LOCK_POLICY } from "@theme/settings/site";
 export const LOCK_UNLOCK_CODE = siteEnv.VITE_AYO_LOCK_UNLOCK_CODE;
 export const LOCK_STORAGE_KEY = "_unlock";
 
-
 export interface LockFacts {
   /** frontmatter.locked（未声明时为 undefined） */
   locked?: unknown;

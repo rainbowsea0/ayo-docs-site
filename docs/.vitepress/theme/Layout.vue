@@ -2,6 +2,7 @@
 import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import { useData, withBase } from "vitepress";
 import { AyoFloatingActions, AyoFooter, AyoHeader } from "@theme/components/portal";
+import { AyoImagePreview } from "@theme/components/common";
 import AyoDocLayout from "@theme/layout/doc/index.vue";
 import { FEEDBACK_MAIL } from "@theme/settings/site";
 
@@ -63,6 +64,9 @@ onBeforeUnmount(() => {
 
   <AyoFooter />
   <AyoFloatingActions />
+
+  <!-- 正文图片预览：只在 .vp-doc 内生效，挂在布局根部以便覆盖全部版式 -->
+  <AyoImagePreview />
 </template>
 
 <style scoped>

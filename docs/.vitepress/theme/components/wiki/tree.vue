@@ -109,7 +109,7 @@ const isGroupStart = (notes: WikiNote[], index: number): boolean =>
 <style scoped>
 .ayo-wiki-tree__empty {
   color: var(--ayo-text-5);
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .ayo-wiki-tree {
@@ -138,7 +138,7 @@ const isGroupStart = (notes: WikiNote[], index: number): boolean =>
   min-width: 0;
   padding: 3px 4px;
   color: var(--ayo-text-2);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: bold;
   text-decoration: none;
 }
@@ -171,7 +171,7 @@ const isGroupStart = (notes: WikiNote[], index: number): boolean =>
   border: 0;
   background: none;
   color: var(--ayo-text-5);
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1;
   cursor: pointer;
 }
@@ -212,7 +212,7 @@ const isGroupStart = (notes: WikiNote[], index: number): boolean =>
   overflow: hidden;
   padding: 2px 4px;
   color: var(--ayo-heading);
-  font-size: 13px;
+  font-size: 12px;
   white-space: nowrap;
   text-overflow: ellipsis;
   text-decoration: none;

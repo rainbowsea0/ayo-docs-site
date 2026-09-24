@@ -33,8 +33,8 @@ interface Channel {
 /** 频道条条目：站点导航的唯一事实来源 */
 const CHANNELS: Channel[] = [
   { text: "首页", link: "/" },
-  { text: "文章", link: "/posts/", activeMatch: "/posts/" },
   { text: "知识库", link: "/wiki/", activeMatch: "/wiki/" },
+  { text: "文章", link: "/posts/", activeMatch: "/posts/" },
   // { text: "项目实战", link: "/projects/" },
   { text: "标签", link: "/tags/", activeMatch: "/tags/" },
   {
@@ -222,7 +222,7 @@ onBeforeUnmount(() => {
 .ayo-channel {
   padding: 5px 12px;
   color: var(--ayo-text);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bold;
   line-height: 1.8;
   text-decoration: none;
@@ -291,7 +291,7 @@ onBeforeUnmount(() => {
   display: block;
   padding: 7px 14px 2px;
   color: var(--ayo-text-5);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: bold;
   white-space: nowrap;
   pointer-events: none;
@@ -300,7 +300,7 @@ onBeforeUnmount(() => {
 .ayo-dropdown__link--sub {
   padding-left: 26px;
   color: var(--ayo-text-3);
-  font-size: 13px;
+  font-size: 14px;
 }
 
 /* 「更多」按钮：只在窄屏出现 */

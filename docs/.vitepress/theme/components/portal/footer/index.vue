@@ -2,6 +2,7 @@
 import { useData, withBase } from "vitepress";
 import { data as posts } from "@theme/data/posts.data";
 import type { PostItem } from "@theme/data/posts.data";
+import AyoThemeSwitch from "./theme-switch.vue";
 
 const { site } = useData();
 
@@ -20,13 +21,16 @@ const currentYear = new Date().getFullYear();
       <p class="ayo-footer__stat">
         本站共收录了 {{ articleCount }} 篇技术文章，其中原创文章 {{ originalCount }} 篇
       </p>
-      <p class="ayo-footer__links">
-        <a class="ayo-footer__link" :href="withBase('/announcement/disclaimer/')">📜 免责声明</a>
-        <a class="ayo-footer__link" :href="withBase('/extends/friends/')">🔗 友情链接</a>
-      </p>
+      <div class="ayo-footer__bar">
+        <p class="ayo-footer__links">
+          <a class="ayo-footer__link" :href="withBase('/announcement/disclaimer/')">免责声明</a>
+          <a class="ayo-footer__link" :href="withBase('/extends/friends/')">友情链接</a>
+        </p>
+        <AyoThemeSwitch class="ayo-footer__theme" />
+      </div>
       <p class="ayo-footer__copy">
-        Copyright © <ClientOnly>{{ currentYear }}</ClientOnly> {{ site.title }} ·
-        本站为非经营性个人网站，内容仅供学习交流 · 转载需注明出处
+        Copyright &copy; <ClientOnly>{{ currentYear }}</ClientOnly> {{ site.title }}. All Rights
+        Reserved.
       </p>
       <p class="ayo-footer__powered">Powered by VitePress</p>
     </div>
@@ -54,14 +58,29 @@ const currentYear = new Date().getFullYear();
   font-size: 12px;
 }
 
+/* 链接行：中列放链接、右列放明暗切换（左列留空占位），这样链接始终在页脚正中，
+   切换按钮贴在可用宽度的右端；两侧 fr 均分剩余空间，窄屏也不会把链接挤偏 */
+.ayo-footer__bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 8px 24px;
+  padding-top: 12px;
+}
+
 .ayo-footer__links {
+  grid-column: 2;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 24px;
-  padding: 12px 0 0;
-  font-size: 13px;
+  font-size: 12px;
+}
+
+.ayo-footer__theme {
+  grid-column: 3;
+  justify-self: end;
 }
 
 .ayo-footer__link {
@@ -86,10 +105,14 @@ const currentYear = new Date().getFullYear();
 .ayo-footer__powered {
   padding-top: 8px;
   color: var(--ayo-text-5);
-  font-size: 11px;
+  font-size: 10px;
 }
 
 @media (max-width: 640px) {
+  .ayo-footer__bar {
+    gap: 8px 14px;
+  }
+
   .ayo-footer__links {
     gap: 14px;
     font-size: 12px;

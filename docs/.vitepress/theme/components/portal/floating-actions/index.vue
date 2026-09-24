@@ -152,15 +152,15 @@ onBeforeUnmount(() => {
   width: 40px;
   height: 40px;
   padding: 0;
-  border: 1px solid var(--ayo-primary-active);
-  background-color: var(--ayo-primary);
+  border: 1px solid var(--ayo-primary-solid-active);
+  background-color: var(--ayo-primary-solid);
   color: #fff;
   cursor: pointer;
   box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
 }
 
 .ayo-float__btn:hover {
-  background-color: var(--ayo-primary-hover);
+  background-color: var(--ayo-primary-solid-hover);
 }
 
 .ayo-float__icon {

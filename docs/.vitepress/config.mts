@@ -2,14 +2,9 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath, URL } from "node:url";
 import { defineConfig, loadEnv, type ConfigEnv } from "vitepress";
-import { vitepressMermaidPreview } from 'vitepress-mermaid-preview';
+import { vitepressMermaidPreview } from "vitepress-mermaid-preview";
 import { readSiteEnv } from "./theme/settings/site-env.ts";
-import {
-  editLinkText,
-  SITE_DESCRIPTION,
-  SITE_TITLE,
-  SOCIAL_LINKS,
-} from "./theme/settings/site.ts";
+import { editLinkText, SITE_DESCRIPTION, SITE_TITLE, SOCIAL_LINKS } from "./theme/settings/site.ts";
 import { countWords, markdownToPlainText } from "./theme/utils/format.ts";
 
 const ENV_DIR = fileURLToPath(new URL("../..", import.meta.url));
@@ -29,7 +24,7 @@ export default (env: ConfigEnv) => {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     base: siteEnv.VITE_AYO_BASE,
-    appearance: false,
+    appearance: true,
     lastUpdated: true,
     transformPageData(pageData, ctx) {
       if (!isWikiNote(pageData.relativePath) || pageData.frontmatter.words !== undefined) return;
@@ -109,13 +104,13 @@ export default (env: ConfigEnv) => {
         const fence = md.renderer.rules.fence;
         if (!fence) return;
         md.renderer.rules.fence = (tokens, idx, options, env, self) => {
-          const title = tokens[idx].info.match(/\[(.*)]/)?.[1]?.trim();
+          const title = tokens[idx].info.match(/\[(.*)]/);
           const html = fence(tokens, idx, options, env, self);
           if (!title) return html;
-          return html.replace(
-            '<span class="lang">',
-            `<span class="vp-code-title">${md.utils.escapeHtml(title)}</span><span class="lang">`
-          );
+          return html.replace(/<\/div>$/, (close) => {
+            const label = `<span class="vp-code-title">${md.utils.escapeHtml(title[1].trim())}</span>`;
+            return label + close;
+          });
         };
         vitepressMermaidPreview(md);
       },

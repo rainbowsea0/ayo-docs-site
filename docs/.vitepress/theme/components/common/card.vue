@@ -92,7 +92,7 @@ withDefaults(
    层次改由标题前那条 3px 色块承担，色块才是 tone 的作用点。 */
 .ayo-card__title {
   margin: 0;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.4;
   color: var(--ayo-heading);
 }

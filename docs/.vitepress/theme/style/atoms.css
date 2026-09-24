@@ -45,7 +45,7 @@
 .ayo-btn--sm {
   height: 28px;
   padding: 0 14px;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .ayo-btn--md {
@@ -54,10 +54,9 @@
   font-weight: bold;
 }
 
-/* 主色实心按钮（列表行末的「阅读全文」）：直角、白字、hover 加深 */
 .ayo-btn--primary {
-  border-color: var(--ayo-primary);
-  background: var(--ayo-primary);
+  border-color: var(--ayo-primary-solid);
+  background: var(--ayo-primary-solid);
   color: #fff;
 }
 
@@ -66,19 +65,18 @@
 }
 
 .ayo-btn--primary:hover {
-  border-color: var(--ayo-primary-hover);
-  background: var(--ayo-primary-hover);
+  border-color: var(--ayo-primary-solid-hover);
+  background: var(--ayo-primary-solid-hover);
   color: #fff;
   text-decoration: none;
 }
 
-/* 频道条内的按钮变体（浅底深字：频道条已改为浅色） */
 .ayo-btn--channel {
   border: 0;
   background: transparent;
   color: var(--ayo-text);
   padding: 6px 14px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -110,7 +108,7 @@
   background-color: var(--ayo-bg);
   color: var(--ayo-text);
   font-family: inherit;
-  font-size: 13px;
+  font-size: 12px;
   outline: none;
   transition:
     border-color var(--ayo-transition),
@@ -199,6 +197,6 @@
 @media (max-width: 720px) {
   .ayo-input {
     height: 28px;
-    font-size: 17px;
+    font-size: 14px;
   }
 }

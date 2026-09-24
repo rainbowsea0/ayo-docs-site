@@ -20,8 +20,8 @@
   },
   "dependencies": {
     "@giscus/vue": "^3.1.1",
+    "lunar-typescript": "^1.8.6",
     "nprogress-v2": "^1.1.10",
-    "vitepress-mermaid-preview": "^0.2.1",
-    "lunar-typescript": "^1.8.6"
+    "vitepress-mermaid-preview": "^0.2.1"
   }
 }

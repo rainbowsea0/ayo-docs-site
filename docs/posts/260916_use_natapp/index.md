@@ -1,6 +1,6 @@
 ---
-title: '使用 NATAPP 实现内网穿透'
-date: 2026-09-16
+title: '一键部署 NATAPP 实现内网穿透'
+date: 2026-09-17
 origin: 原创
 author: zhangheng
 tags:

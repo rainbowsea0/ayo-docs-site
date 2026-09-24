@@ -15,7 +15,7 @@ body {
   background-color: var(--ayo-page-bg);
   color: var(--ayo-text);
   font-family: var(--ayo-font);
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.8;
   font-variant-numeric: tabular-nums;
   -webkit-text-size-adjust: 100%;
@@ -75,7 +75,7 @@ a:hover {
 }
 
 ::selection {
-  background-color: var(--ayo-primary);
+  background-color: var(--ayo-primary-solid);
   color: #fff;
 }
 
@@ -114,7 +114,7 @@ a:hover {
 }
 
 .vp-doc {
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.9;
   color: var(--ayo-text);
   word-wrap: break-word;
@@ -323,6 +323,7 @@ a:hover {
   padding: 2px;
   border: 1px solid var(--ayo-border);
   background-color: var(--ayo-bg);
+  cursor: zoom-in;
 }
 
 /* 独占一行的图片（截图几乎都是这种）居中并给足上下留白；混在文字里的小图不受影响 */
@@ -344,7 +345,7 @@ a:hover {
 .vp-doc figcaption {
   margin-top: 8px;
   color: var(--ayo-text-4);
-  font-size: 13px;
+  font-size: 12px;
   text-align: center;
 }
 
@@ -390,7 +391,7 @@ a:hover {
   border: 1px solid var(--ayo-border);
   background-color: var(--ayo-bg-soft);
   font-family: var(--ayo-font-mono);
-  font-size: 13px;
+  font-size: 12px;
 }
 
 /* ---------- 代码块：深色岛 ---------- */
@@ -418,7 +419,7 @@ a:hover {
   padding: 16px 0;
   overflow-x: auto;
   font-family: var(--ayo-font-mono);
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.7;
   tab-size: 4;
 }
@@ -573,7 +574,7 @@ a:hover {
   border-right: 1px solid var(--ayo-code-line);
   color: var(--ayo-code-number);
   font-family: var(--ayo-font-mono);
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.7;
   text-align: center;
   user-select: none;
@@ -601,7 +602,7 @@ a:hover {
   align-items: center;
   padding: 0 14px;
   color: var(--ayo-code-dim);
-  font-size: 13px;
+  font-size: 12px;
   white-space: nowrap;
   cursor: pointer;
   transition:
@@ -788,7 +789,7 @@ a:hover {
   padding-top: 12px;
   border-top: 1px solid var(--ayo-line);
   color: var(--ayo-text-3);
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .vp-doc .footnotes-list {

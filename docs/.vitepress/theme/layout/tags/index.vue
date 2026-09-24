@@ -100,14 +100,14 @@ const descText = computed(
 .ayo-tags__title {
   margin: 0 0 8px;
   color: var(--ayo-primary);
-  font-size: 25px;
+  font-size: 30px;
   line-height: 1.3;
 }
 
 .ayo-tags__desc {
   margin: 0 0 20px;
   color: var(--ayo-text-3);
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .ayo-tags__cloud {
@@ -155,7 +155,7 @@ const descText = computed(
 .ayo-tags__empty {
   padding: 24px;
   color: var(--ayo-text-4);
-  font-size: 13px;
+  font-size: 12px;
   text-align: center;
 }
 
@@ -172,7 +172,7 @@ const descText = computed(
   padding-bottom: 4px;
   border-bottom: 1px solid var(--ayo-line);
   color: var(--ayo-blue);
-  font-size: 17px;
+  font-size: 16px;
 }
 
 .ayo-tags__anchor {
@@ -190,7 +190,7 @@ const descText = computed(
 
 .ayo-tags__heading-count {
   color: var(--ayo-text-5);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: normal;
 }
 
@@ -223,6 +223,7 @@ const descText = computed(
 
 .ayo-tags__link {
   flex: 1;
+  font-size: 14px;
   min-width: 0;
   overflow: hidden;
   color: var(--ayo-heading);

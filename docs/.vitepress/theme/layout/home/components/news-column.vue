@@ -148,7 +148,7 @@ const newest = computed(() => new Set(latest.value.slice(0, 2).map((post) => pos
   flex: 1;
   min-width: 0;
   color: var(--ayo-heading);
-  font-size: 19px;
+  font-size: 20px;
   font-weight: bold;
   line-height: 1.5;
   text-decoration: none;

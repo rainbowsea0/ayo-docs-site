@@ -1,12 +1,16 @@
 @charset "UTF-8";
 
-:root {
+:root,
+html.dark .ayo-doc--announce {
   color-scheme: light;
   --ayo-primary: #2563eb;
   --ayo-primary-hover: #1d4ed8;
   --ayo-primary-active: #1e40af;
   --ayo-primary-soft: #eff6ff;
   --ayo-primary-line: #bfdbfe;
+  --ayo-primary-solid: var(--ayo-primary);
+  --ayo-primary-solid-hover: var(--ayo-primary-hover);
+  --ayo-primary-solid-active: var(--ayo-primary-active);
   --ayo-blue: #1d4ed8;
   --ayo-green: #15803d;
   --ayo-green-soft: #f0fdf4;
@@ -52,6 +56,7 @@
   --ayo-bg-band: #e8ecf2;
   --ayo-quote-bg: #f1f4f8;
   --ayo-quote-bar: #d0d7de;
+  --ayo-bg-fade: rgba(255, 255, 255, 0);
   --ayo-border: #d0d7de;
   --ayo-line: #e6e8eb;
   --ayo-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.06);
@@ -70,4 +75,54 @@
   --ayo-font-serif: "SimSun", "NSimSun", "Songti SC", "STSong", "AR PL UMing CN", serif;
   --ayo-font-mono: Consolas, "SFMono-Regular", Menlo, Monaco, "Courier New", monospace;
   --ayo-radius: 0;
+}
+
+html.dark {
+  color-scheme: dark;
+
+  /* 强调色：浅色的 #2563eb 在 #0d1117 上只有 2.8:1，暗色下一律提亮 */
+  --ayo-primary: #58a6ff;
+  --ayo-primary-hover: #79c0ff;
+  --ayo-primary-active: #388bfd;
+  --ayo-primary-soft: rgba(56, 139, 253, 0.15);
+  --ayo-primary-line: rgba(56, 139, 253, 0.4);
+  --ayo-primary-solid: #1f6feb;
+  --ayo-primary-solid-hover: #388bfd;
+  --ayo-primary-solid-active: #1158c7;
+
+  --ayo-blue: #58a6ff;
+  --ayo-green: #3fb950;
+  --ayo-green-soft: rgba(46, 160, 67, 0.15);
+  --ayo-amber: #d29922;
+  --ayo-amber-dark: #e3b341;
+  --ayo-amber-soft: rgba(187, 128, 9, 0.15);
+  --ayo-red: #f85149;
+  --ayo-red-soft: rgba(248, 81, 73, 0.15);
+  --ayo-cyan: #56d4dd;
+  --ayo-cyan-soft: rgba(57, 197, 207, 0.15);
+
+  --ayo-link: #58a6ff;
+  --ayo-link-hover: #79c0ff;
+  --ayo-link-visited: #8b949e;
+
+  --ayo-text: #e6edf3;
+  --ayo-text-2: #c9d1d9;
+  --ayo-text-3: #8b949e;
+  --ayo-text-4: #7d8590;
+  --ayo-text-5: #6e7681;
+  --ayo-heading: #f0f6fc;
+  --ayo-heading-2: #e6edf3;
+
+  --ayo-bg: #161b22;
+  --ayo-page-bg: #0d1117;
+  --ayo-bg-soft: #21262d;
+  --ayo-bg-band: #010409;
+  --ayo-quote-bg: #161b22;
+  --ayo-quote-bar: #30363d;
+  --ayo-border: #30363d;
+  --ayo-line: #21262d;
+  --ayo-shadow: 0 1px 2px rgba(1, 4, 9, 0.5), 0 1px 3px rgba(1, 4, 9, 0.6);
+  --ayo-shadow-hover: 0 6px 18px rgba(1, 4, 9, 0.7);
+  --ayo-bg-fade: rgba(22, 27, 34, 0);
+  --ayo-code-border: #30363d;
 }

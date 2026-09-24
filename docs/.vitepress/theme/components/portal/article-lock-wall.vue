@@ -125,7 +125,7 @@ onBeforeUnmount(() => {
   justify-content: center;
   height: 200px;
   padding-bottom: 52px;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, var(--ayo-bg) 92%);
+  background: linear-gradient(to bottom, var(--ayo-bg-fade) 0%, var(--ayo-bg) 92%);
   pointer-events: none;
 }
 

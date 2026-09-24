@@ -104,7 +104,8 @@ const latestUpdated = (topic: WikiTopic): string => {
   min-width: 0;
   overflow: hidden;
   color: var(--ayo-heading);
-  font-size: 17px;
+  font-size: 16px;
+  font-weight: bold;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -128,7 +129,7 @@ const latestUpdated = (topic: WikiTopic): string => {
   flex: 1 1 auto;
   margin: 6px 0 10px;
   color: var(--ayo-text-2);
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.7;
 }
 

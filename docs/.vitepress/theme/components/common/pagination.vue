@@ -103,8 +103,8 @@ const go = (page: number): void => {
 }
 
 .ayo-pagination :deep(.is-current) {
-  border-color: var(--ayo-primary);
-  background: var(--ayo-primary);
+  border-color: var(--ayo-primary-solid);
+  background: var(--ayo-primary-solid);
   color: #fff;
 }
 </style>

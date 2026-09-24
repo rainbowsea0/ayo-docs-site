@@ -206,7 +206,7 @@ onBeforeUnmount(clearTimers);
 .ayo-term__title {
   margin-left: 6px;
   color: #8b949e;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .ayo-term__status {
@@ -216,7 +216,7 @@ onBeforeUnmount(clearTimers);
   margin-right: 8px;
   margin-left: auto;
   color: #8b949e;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .ayo-term__status-dot {
@@ -254,7 +254,7 @@ onBeforeUnmount(clearTimers);
   background-color: #21262d;
   color: #8b949e;
   font-family: inherit;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.5;
   cursor: pointer;
 }
@@ -270,7 +270,7 @@ onBeforeUnmount(clearTimers);
   overflow-y: auto;
   padding: 10px 14px;
   color: #c9d1d9;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.8;
 }
 
@@ -296,7 +296,7 @@ onBeforeUnmount(clearTimers);
   background-color: rgba(63, 185, 80, 0.12);
   color: #3fb950;
   font-family: inherit;
-  font-size: 21px;
+  font-size: 20px;
   line-height: 1;
   cursor: pointer;
 }
@@ -308,7 +308,7 @@ onBeforeUnmount(clearTimers);
 
 .ayo-term__cover-text {
   color: #8b949e;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .ayo-term__line {

@@ -68,7 +68,7 @@ withDefaults(
 .ayo-ticker__label {
   flex-shrink: 0;
   padding: 0 16px;
-  background-color: var(--ayo-primary);
+  background-color: var(--ayo-primary-solid);
   color: #fff;
   font-size: 14px;
   font-weight: bold;

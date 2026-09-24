@@ -177,7 +177,7 @@ onMounted(async () => {
 }
 
 .ayo-cal__today:hover {
-  background-color: var(--ayo-primary);
+  background-color: var(--ayo-primary-solid);
   color: #fff;
 }
 

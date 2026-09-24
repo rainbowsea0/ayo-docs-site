@@ -89,7 +89,6 @@ const showNav = computed(() => props.post !== null || Boolean(props.prev || prop
         :title="`${seriesName} · 第 ${seriesIndex} 章`"
         >系列</span
       >
-      <span v-if="origin === '转载'" class="ayo-doc__flag">转载</span>
     </div>
 
     <div v-if="showMeta && !hideMeta && (created || updated || articleType)" class="ayo-doc__meta">
@@ -103,7 +102,7 @@ const showNav = computed(() => props.post !== null || Boolean(props.prev || prop
       <span v-if="articleType" class="ayo-doc__meta-item">📑 {{ articleType }}</span>
       <span class="ayo-doc__meta-item">📝 {{ wordCount }} 字</span>
       <span class="ayo-doc__meta-item">⏱️ 约 {{ readingMinutes }} 分钟</span>
-      <span v-if="origin" class="ayo-doc__meta-item ayo-doc__meta-item--end">🖊️ {{ origin }}</span>
+      <span v-if="origin" class="ayo-doc__meta-item ayo-doc__meta-item--end">{{ origin }}</span>
     </div>
 
     <div class="ayo-doc__lock-wrap" :class="{ 'is-locked': lockedView }">
