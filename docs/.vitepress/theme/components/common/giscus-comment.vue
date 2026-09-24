@@ -8,7 +8,7 @@ import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { GISCUS } from "@theme/settings/site";
 
 const route = useRoute();
-const { isDark } = useData();
+const { isDark, page } = useData();
 
 /**
  * giscus 报「这一页还没有讨论」的那条 error 文案（小写后做包含匹配）
@@ -79,7 +79,8 @@ watch(
         :repo-id="GISCUS.repoId"
         :category="GISCUS.category"
         :category-id="GISCUS.categoryId"
-        mapping="pathname"
+        :term="page.relativePath"
+        mapping="specific"
         strict="0"
         reactions-enabled="1"
         emit-metadata="0"
