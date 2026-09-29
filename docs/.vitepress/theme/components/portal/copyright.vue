@@ -8,7 +8,7 @@
  * 整块要不要出现由布局决定（公告页不要这块）：本组件挂载即渲染，不认版式。
  */
 import { computed } from "vue";
-import { useData } from "vitepress";
+import { useData, withBase } from "vitepress";
 import {
   buildArticleUrl,
   resolveArticleUrl,
@@ -32,7 +32,7 @@ const articleUrl = computed(() => {
   const override = resolveArticleUrl(fm.value);
   if (override) return override;
   if (!isOriginal.value) return "";
-  return buildArticleUrl(SITE_URL, site.value.base ?? "", page.value.relativePath ?? "");
+  return buildArticleUrl(SITE_URL, withBase(page.value.relativePath));
 });
 </script>
 

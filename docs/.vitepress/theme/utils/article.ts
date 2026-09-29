@@ -72,19 +72,12 @@ export const resolveArticleUrl = (frontmatter: Record<string, unknown>): string 
   String(frontmatter.articleUrl ?? "").trim();
 
 /** 按站点域名 + 相对路径拼出可直接分享的文章链接 */
-export const buildArticleUrl = (siteUrl: string, base: string, relativePath: string): string => {
-  if (!siteUrl) return "";
-  let path = relativePath.replace(/^\/+/, "");
-  if (path === "index.md") {
-    path = "";
-  } else if (path.endsWith("/index.md")) {
+export const buildArticleUrl = (domain: string, path: string): string => {
+  if (!path) return "";
+  if (path.endsWith("/index.md")) {
     path = `${path.slice(0, -"/index.md".length)}/`;
   } else if (path.endsWith(".md")) {
     path = `${path.slice(0, -3)}.html`;
   }
-  const parts = [siteUrl.replace(/\/+$/, "")];
-  const cleanBase = base.replace(/^\/+|\/+$/g, "");
-  if (cleanBase) parts.push(cleanBase);
-  if (path) parts.push(path);
-  return parts.join("/");
+  return new URL(path, domain + "/").href;
 };

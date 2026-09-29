@@ -329,7 +329,7 @@ a:hover {
 /* 独占一行的图片（截图几乎都是这种）居中并给足上下留白；混在文字里的小图不受影响 */
 .vp-doc p > img:only-child {
   display: block;
-  margin: 20px auto;
+  /*margin: 20px auto;*/
 }
 
 /* 图注：VitePress 不会自动生成 <figure>，作者手写时才生效 */
