@@ -161,9 +161,9 @@ public class VideoUserServiceTest {
 有小伙伴可能会问：IVideoUserService 里有 definition() 和 advertisement() 两个方法，这还算单一职责吗？
 
 SRP 的判断依据**不是方法数量多少，而是类 / 接口是否只有一类变化原因**。
-<br>
+<br/>
 在本例中，每个实现类的所有方法都只因同一个原因变化——[某个用户等级的权益策略调整]，因此是符合单一职责原则的。
-<br>
+<br/>
 但如果把[清晰度策略]和[会员计费]放在同一个类里，就属于职责混杂：二者的修改动因完全不一样。
 
 
@@ -238,20 +238,25 @@ public class VideoUserService {
 最终调用时：
 
 ```java
-VideoUserService vip = new VideoUserService(
-        new VipDefinitionService(),
-        new VipAdvertisementService()
-);
-vip.serve();
+public class VideoUserServiceTest {
+
+    public static void main(String[] args) {
+        VideoUserService vip = new VideoUserService(
+                new VipDefinitionService(),
+                new VipAdvertisementService()
+        );
+        vip.serve();
+    }
+}
 ```
 
 这样清晰度规则变化 → 只动 IDefinitionService 的实现；广告规则变化 → 只动 IAdvertisementService 的实现，两类团队互不干扰。
-<br>
+<br/>
 如何选择？ 标准是：这两个东西在业务里会不会独立变化？
 
 
 如果广告和清晰度总是随[用户等级]一起调整（改 VIP 权益就一起改） → 用视角 A 就够了，而且更简单；
-<br>
+<br/>
 如果它们由不同团队、不同节奏维护 → 用视角 B，SRP 的收益才能体现。
 
 SRP 的 “职责” 没有绝对客观标准，取决于你对业务变化的预判。

@@ -115,6 +115,8 @@ const isGroupStart = (list: WikiNote[], index: number): boolean =>
 /* 条目名近黑：蓝色只留给 hover 与「当前项」，否则整屏蓝字像全都处于激活态 */
 .ayo-wiki-notes__link {
   flex: 1;
+  font-weight: bold;
+  font-size: 14px;
   min-width: 0;
   color: var(--ayo-heading);
 }
@@ -133,7 +135,7 @@ const isGroupStart = (list: WikiNote[], index: number): boolean =>
 .ayo-wiki-notes__summary {
   margin: 4px 0 0;
   color: var(--ayo-text-2);
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.7;
 }
 

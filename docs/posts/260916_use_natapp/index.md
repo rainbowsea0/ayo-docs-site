@@ -42,10 +42,10 @@ locked: true
 ```mermaid
 sequenceDiagram
     participant 用户 as 终端用户
-    participant 平台 as 第三方平台<br>(微信/支付宝)
-    participant 服务器 as NATAPP服务器<br>(公网)
-    participant 客户端 as NATAPP客户端<br>(本地)
-    participant 服务 as 本地开发服务<br>(localhost:8080)
+    participant 平台 as 第三方平台<br/>(微信/支付宝)
+    participant 服务器 as NATAPP服务器<br/>(公网)
+    participant 客户端 as NATAPP客户端<br/>(本地)
+    participant 服务 as 本地开发服务<br/>(localhost:8080)
 
     Note over 客户端, 服务器: 隧道建立（客户端启动时）
     客户端->>服务器: 携带 authtoken 发起认证

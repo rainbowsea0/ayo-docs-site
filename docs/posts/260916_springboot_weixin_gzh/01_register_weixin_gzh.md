@@ -14,7 +14,7 @@ locked: true
 
 ## 一、注册账号
 首先需要前往[【微信公众测试平台】](https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&t=sandbox/index)注册账号
-<br>
+<br/>
 进入如下界面即可：
 ![微信公众测试平台](./assets/01_weixin_gzh_main.webp)
 
@@ -40,7 +40,7 @@ Total Connections       0
 ```
 
 `Forwarding` 为 `http://zhangh0803.natapp1.cc -> http://127.0.0.1:8000` 表示将本地 `8000` 端口代理到 `http://zhangh0803.natapp1.cc` 地址。
-<br>
+<br/>
 `Tunnel Status` 为 `Online` 表示通道连接成功，此时可以正常的代理访问了。
 
 ## 三、接口配置信息

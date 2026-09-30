@@ -9,9 +9,9 @@ layout: wiki
 ---
 
 里氏替换原则（Liskov Substitution Principle，LSP）：所有引用父类的地方，都可以无缝使用其子类替换，替换后程序的功能、逻辑、异常预期完全不变，不会出现任何异常、BUG或业务偏差。
-<br>
+<br/>
 简单理解：子类是父类的纯粹扩展，绝对不重写、不破坏父类的原有行为契约。
-<br>
+<br/>
 LSP 是实现多态的基石，也是开闭原则的底层保障，违背 LSP 会直接导致多态失效、代码隐性 BUG 频发。
 
 ## 案例一 【支付功能】
@@ -60,7 +60,7 @@ public class PayTest {
 ```
 
 执行结果如下所示：
-```shell
+```md
 java.lang.IllegalArgumentException: 信用卡支付金额不能超过1200元
 
 	at cn.manihong.demo.design.lsp.v1.CreditCardPayment.pay(CreditCardPayment.java:14)
@@ -104,7 +104,7 @@ Process finished with exit code -1
 ### 2. 改进后
 
 核心优化思路：统一父类契约，所有子类严格遵循父类定义的行为、异常规范，差异化能力合理扩展，不破坏原有约定。
-<br>
+<br/>
 第一步：定义统一支付异常体系，规范异常契约
 ```java
 /**
@@ -199,9 +199,9 @@ public class PayTest {
 ```
 
 预期可能会执行失败，并且返回的结果也是预期定义的异常结果。符合里氏替换原则。
-<br>
+<br/>
 执行结果如下所示：
-```java
+```md
 cn.manihong.demo.design.lsp.v2.PaymentException: 支付失败, 信用卡余额不足
 
 	at cn.manihong.demo.design.lsp.v2.CreditCardPayment.pay(CreditCardPayment.java:20)
@@ -434,7 +434,7 @@ public class ShapeAreaTest {
 - 子类正方形特性：宽高必须相等，设置宽会同步改高，设置高会同步改宽
 
 当调用方以父类矩形的视角操作子类正方形时，会完全违背预期：原本只修改宽度，结果高度同步变化，程序逻辑彻底错乱。
-<br>
+<br/>
 LSP核心精髓：子类必须无条件遵守父类对外公布的所有行为契约，调用方只信任父类，无需感知子类。一旦子类破坏契约，就不具备继承资格。
 
 ## LSP 核心判断标准
@@ -465,5 +465,5 @@ LSP核心精髓：子类必须无条件遵守父类对外公布的所有行为�
 
 ## 结语
 里氏替换原则的本质不是“子类继承父类”，而是子类遵守父类契约。继承是语法，LSP是设计约束。
-<br>
+<br/>
 所有多态、接口扩展、框架插件化能力，全部建立在 LSP 之上。严格遵循 LSP，能从根源规避继承带来的隐性 BUG，让代码扩展更安全、更规范、更易维护
